@@ -2,9 +2,6 @@
 
 **Course Code:** CSE 316  
 **Course Title:** Operating Systems  
-**Term:** 25261  
-**Max Marks:** 30
-
 ---
 
 ## 1. Project Overview
@@ -268,8 +265,8 @@ END
 ## 6. Revision Tracking on GitHub
 
 ### Repository Information
-**Repository Name:** ai-directory-management-system  
-**GitHub Link:** [To be added after repository creation]
+**Repository Name:** ai-directory-organiser
+**GitHub Link:** https://github.com/ShivamMehra1/Ai-Directory-Organizer
 
 ### Revision History
 
