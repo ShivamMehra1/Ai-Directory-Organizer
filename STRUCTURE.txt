@@ -1,0 +1,36 @@
+AI Directory Organiser - Project Structure
+==========================================
+
+📁 AI directory organiser/
+│
+├── 📄 README.md                    - Main project documentation
+├── 📄 PROJECT_REPORT.md            - Complete project report
+├── 📄 FLOW_DIAGRAM.md              - System flow diagrams
+├── 📄 GITHUB_UPLOAD.md             - GitHub upload instructions
+├── 📄 requirements.txt              - Python dependencies
+├── 📄 build_exe.py                 - Script to build Windows .exe
+├── 📄 create_installer.bat          - Automated build script
+├── 📄 .gitignore                   - Git ignore rules
+│
+├── 📁 src/                          - Source code
+│   ├── __init__.py
+│   ├── file_analyzer.py            - Module 1: File Analysis
+│   ├── ai_categorizer.py           - Module 2: AI Categorization
+│   ├── directory_organizer.py      - Module 3: Directory Organization
+│   ├── main.py                     - CLI application entry point
+│   └── gui_main.py                 - GUI application entry point
+│
+├── 📁 config/                       - Configuration
+│   └── categories.yaml             - Category definitions
+│
+├── 📁 tests/                        - Unit tests
+│   ├── __init__.py
+│   ├── test_file_analyzer.py
+│   └── test_ai_categorizer.py
+│
+└── 📁 dist/                         - Executable
+    └── DirectoryManagementSystem.exe - Windows executable (ready to use)
+
+Total Files: 19
+Ready for GitHub Upload: ✅
+

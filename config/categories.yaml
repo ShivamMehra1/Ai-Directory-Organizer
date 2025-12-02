@@ -1,0 +1,51 @@
+# Custom Category Definitions
+# You can add custom categories or modify existing ones here
+# The system uses these categories by default. Uncomment and modify to customize.
+
+# Current Default Categories:
+
+documents:
+  extensions: ['.pdf', '.doc', '.docx', '.txt', '.rtf', '.odt']
+  keywords: ['document', 'report', 'letter', 'memo']
+  mime_types: ['application/pdf', 'application/msword']
+
+images:
+  extensions: ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg', '.webp']
+  keywords: ['image', 'photo', 'picture', 'screenshot']
+  mime_types: ['image/jpeg', 'image/png', 'image/gif']
+
+videos:
+  extensions: ['.mp4', '.avi', '.mkv', '.mov', '.wmv', '.flv', '.webm']
+  keywords: ['video', 'movie', 'clip', 'recording']
+  mime_types: ['video/mp4', 'video/avi', 'video/x-msvideo']
+
+audio:
+  extensions: ['.mp3', '.wav', '.flac', '.aac', '.ogg', '.m4a']
+  keywords: ['audio', 'music', 'song', 'sound']
+  mime_types: ['audio/mpeg', 'audio/wav', 'audio/flac']
+
+code:
+  extensions: ['.py', '.js', '.java', '.cpp', '.c', '.html', '.css', '.php', '.rb', '.go', '.rs', '.swift', '.ts']
+  keywords: ['code', 'program', 'script', 'function', 'class']
+  mime_types: ['text/x-python', 'text/javascript', 'text/x-java']
+
+archives:
+  extensions: ['.zip', '.rar', '.7z', '.tar', '.gz', '.bz2']
+  keywords: ['archive', 'compressed', 'zip']
+  mime_types: ['application/zip', 'application/x-rar']
+
+spreadsheets:
+  extensions: ['.xls', '.xlsx', '.csv', '.ods']
+  keywords: ['spreadsheet', 'excel', 'data', 'table']
+  mime_types: ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']
+
+presentations:
+  extensions: ['.ppt', '.pptx', '.odp']
+  keywords: ['presentation', 'slides', 'powerpoint']
+  mime_types: ['application/vnd.ms-powerpoint']
+
+# Example: Adding a custom category
+# custom_category:
+#   extensions: ['.ext1', '.ext2']
+#   keywords: ['keyword1', 'keyword2']
+#   mime_types: ['mime/type1']
