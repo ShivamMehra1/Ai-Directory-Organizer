@@ -1,4 +1,42 @@
-# Changelog - Version 2.0
+# Changelog
+
+## Version 3.0.0 - Cloud Storage Integration
+
+### New Features
+
+#### Cloud Storage Integration
+- **Module**: `src/cloud_storage.py`, `src/cloud_auth_helper.py`
+- **Features**:
+  - Upload organized files to Google Drive, Dropbox, or OneDrive
+  - Preserves organized folder structure in cloud
+  - Two-phase upload process (create folders first, then upload files)
+  - OAuth 2.0 authentication for Google Drive
+  - Access token authentication for Dropbox
+  - Device code flow for OneDrive
+  - Progress tracking with detailed logging
+  - Error handling with specific solutions
+  - Folder caching for performance
+  - Helper buttons in GUI: Setup Guide, Validate Credentials, Open Cloud Console
+  - CLI options: `--cloud-upload`, `--cloud-provider`, `--cloud-path`, `--cloud-credentials`
+  - GUI: Cloud storage panel with provider selection and credentials browser
+- **Documentation**: Complete guides in `docs/cloud/` folder
+
+### Bug Fixes
+- Fixed folder creation issues in cloud upload
+- Improved error handling for cloud authentication (API not enabled, 403 errors)
+- Better path handling for cloud folder structure
+- Fixed upload progress tracking
+- Improved folder mapping for organized structure preservation
+
+### Technical Improvements
+- Two-phase upload process for better folder organization
+- Folder caching to reduce API calls
+- Enhanced error messages with direct links to solutions
+- Better logging integration with GUI
+
+---
+
+## Version 2.0.0 - Enhanced Features
 
 ## Summary
 Version 2.0 includes significant bug fixes and major new features to enhance the AI-Based Directory Management System.

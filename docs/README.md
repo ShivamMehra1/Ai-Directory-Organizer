@@ -1,6 +1,6 @@
 # Documentation Index
 
-This folder contains additional documentation for the AI Directory Organizer v2.0.
+This folder contains additional documentation for the AI Directory Organizer v3.0.
 
 ## 📁 Folder Structure
 
@@ -43,5 +43,5 @@ All documentation is kept up-to-date with the latest features. If you find any i
 
 ---
 
-**Last Updated:** Version 2.0.0
+**Last Updated:** Version 3.0.0 - Cloud Storage Integration
 

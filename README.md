@@ -1,8 +1,28 @@
-# AI-Based Directory Management System - Version 2.0
+# AI-Based Directory Management System - Version 3.0
 
-An intelligent file organization system that automatically categorizes and organizes files efficiently using AI and rule-based techniques.
+An intelligent file organization system that automatically categorizes and organizes files efficiently using AI and rule-based techniques, with cloud storage integration.
 
-## 🆕 Version 2.0 - What's New
+## 🆕 Version 3.0 - What's New
+
+### ☁️ Cloud Storage Integration (NEW in v3.0)
+- **Google Drive Support**: Upload organized files to Google Drive with preserved folder structure
+- **Dropbox Support**: Upload files to Dropbox with folder hierarchy
+- **OneDrive Support**: Microsoft OneDrive integration
+- **Two-Phase Upload**: Creates folders first, then uploads files for better organization
+- **OAuth 2.0 Authentication**: Secure authentication with helper tools
+- **Progress Tracking**: Real-time upload progress and detailed error reporting
+- **Helper Buttons**: Setup guides, credential validation, and cloud console links in GUI
+- **Automatic Folder Creation**: Maintains organized folder structure in cloud
+- **Large File Support**: Resumable uploads for large files
+
+**Quick Start:**
+```bash
+python src/main.py --source ./files --target ./organized --cloud-upload --cloud-provider googledrive --cloud-path /OrganizedFiles
+```
+
+See `docs/cloud/` for complete setup guides.
+
+## 📋 Version 2.0 Features
 
 ### Bug Fixes
 - ✅ Fixed magic library import error handling for Windows compatibility
@@ -10,14 +30,13 @@ An intelligent file organization system that automatically categorizes and organ
 - ✅ Added path validation to prevent source=target directory errors
 - ✅ Improved error handling throughout the application
 
-### New Features
+### Version 2.0 Features
 - 🔍 **Duplicate File Detection**: Find and report duplicate files with wasted space calculation
 - 🎯 **Advanced File Filtering**: Filter by size, extension, date, name patterns, and exclude patterns
 - ↩️ **Undo Functionality**: Undo last organization operation
 - 📊 **Statistics Dashboard**: Comprehensive statistics and analytics
 - ⚙️ **Configuration Export/Import**: Save and load custom configurations
 - 🎨 **Enhanced GUI**: Improved interface with filtering options and better progress tracking
-- ☁️ **Cloud Storage Integration**: Organize and upload files to Google Drive, Dropbox, or OneDrive with organized folder structure
 
 ## 🎯 Project Overview
 
@@ -39,7 +58,7 @@ This system automatically analyzes files in a directory, categorizes them using 
 - **↩️ Undo Support**: Undo last organization operation
 - **📈 Statistics & Analytics**: Detailed statistics and reports
 - **💾 Config Export/Import**: Save and load custom configurations
-- **☁️ Cloud Storage**: Organize files locally and upload to Google Drive, Dropbox, or OneDrive
+- **☁️ Cloud Storage (v3.0)**: Organize files locally and upload to Google Drive, Dropbox, or OneDrive with preserved folder structure
 
 ## 📂 Project Structure
 
@@ -290,17 +309,20 @@ The executable will be created in `dist/DirectoryManagementSystem.exe`
 - Import configuration from files
 - Default configuration templates
 
-### Module 9: Cloud Storage Integration (NEW in V2)
+### Module 9: Cloud Storage Integration (NEW in V3.0)
 - Upload organized files to Google Drive, Dropbox, or OneDrive
 - Preserves organized folder structure in cloud
+- Two-phase upload process (folders first, then files)
 - OAuth 2.0 authentication
-- Progress tracking and error handling
+- Progress tracking and detailed error handling
 - Supports large file uploads with resumable uploads
+- Folder caching for performance
 
-### Module 10: Cloud Auth Helpers (NEW in V2)
+### Module 10: Cloud Auth Helpers (NEW in V3.0)
 - Setup guides for cloud providers
-- Credential validation
+- Credential validation functions
 - Quick access to cloud console links
+- Error-specific troubleshooting guides
 
 ## 🔧 Configuration
 
@@ -376,6 +398,7 @@ pip install pyinstaller
 ### Main Documentation
 - **README.md**: This file - main project documentation
 - **CHANGELOG.md**: Version history and changes
+- **RELEASE_NOTES_V3.md**: Version 3.0 release notes (Cloud Storage Integration)
 - **RELEASE_NOTES_V2.md**: Version 2.0 release notes
 
 ### Cloud Storage Documentation
@@ -399,8 +422,14 @@ Educational Project - CSE 316 Operating Systems
 
 ## 👥 Credits
 
- Shivam Mehra 
- Parth Tripathi 
+**Version 3.0:**
+- Cloud Storage Integration
+- Enhanced Error Handling
+- Improved User Experience
+
+**Version 2.0 & Earlier:**
+- Shivam Mehra
+- Parth Tripathi
 
 ---
 
@@ -419,5 +448,7 @@ python src/main.py --source ./test_files --target ./organized
 # 4. Check organized output
 # Files are copied to organized/ while originals remain in test_files/
 ```
+
+**Version 3.0 - Now with Cloud Storage Integration! ☁️**
 
 **Happy Organizing! 🎉**
