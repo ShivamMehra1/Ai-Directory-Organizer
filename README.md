@@ -1,6 +1,22 @@
-# AI-Based Directory Management System
+# AI-Based Directory Management System - Version 2.0
 
 An intelligent file organization system that automatically categorizes and organizes files efficiently using AI and rule-based techniques.
+
+## 🆕 Version 2.0 - What's New
+
+### Bug Fixes
+- ✅ Fixed magic library import error handling for Windows compatibility
+- ✅ Fixed import path issues in main.py
+- ✅ Added path validation to prevent source=target directory errors
+- ✅ Improved error handling throughout the application
+
+### New Features
+- 🔍 **Duplicate File Detection**: Find and report duplicate files with wasted space calculation
+- 🎯 **Advanced File Filtering**: Filter by size, extension, date, name patterns, and exclude patterns
+- ↩️ **Undo Functionality**: Undo last organization operation
+- 📊 **Statistics Dashboard**: Comprehensive statistics and analytics
+- ⚙️ **Configuration Export/Import**: Save and load custom configurations
+- 🎨 **Enhanced GUI**: Improved interface with filtering options and better progress tracking
 
 ## 🎯 Project Overview
 
@@ -17,6 +33,11 @@ This system automatically analyzes files in a directory, categorizes them using 
 - **⚙️ Configurable Rules**: Custom categorization and organization rules
 - **👀 Dry-Run Mode**: Preview changes before applying them
 - **📊 Comprehensive Logging**: Track all operations with detailed logs
+- **🔍 Duplicate Detection**: Find duplicate files and calculate wasted space
+- **🎯 Advanced Filtering**: Filter files by size, extension, date, patterns
+- **↩️ Undo Support**: Undo last organization operation
+- **📈 Statistics & Analytics**: Detailed statistics and reports
+- **💾 Config Export/Import**: Save and load custom configurations
 
 ## 📂 Project Structure
 
@@ -27,6 +48,11 @@ This system automatically analyzes files in a directory, categorizes them using 
 │   ├── file_analyzer.py      # Module 1: File Analysis
 │   ├── ai_categorizer.py     # Module 2: AI Categorization
 │   ├── directory_organizer.py # Module 3: Directory Organization
+│   ├── duplicate_detector.py # Module 4: Duplicate Detection (NEW)
+│   ├── file_filter.py        # Module 5: File Filtering (NEW)
+│   ├── undo_manager.py       # Module 6: Undo Manager (NEW)
+│   ├── statistics.py         # Module 7: Statistics (NEW)
+│   ├── config_manager.py     # Module 8: Config Manager (NEW)
 │   ├── main.py               # CLI application entry point
 │   └── gui_main.py          # GUI application entry point
 ├── config/
@@ -82,6 +108,11 @@ python src/main.py --source ./test_files --target ./organized --strategy date
 - `--strategy`: Organization strategy (`category` or `date`)
 - `--config`: Path to custom categories configuration file
 - `--recursive`: Scan subdirectories recursively (default: True)
+- `--min-size`: Minimum file size in bytes to include
+- `--max-size`: Maximum file size in bytes to include
+- `--exclude-ext`: File extensions to exclude (e.g., `.tmp .bak`)
+- `--find-duplicates`: Find and report duplicate files
+- `--stats`: Generate detailed statistics report
 
 ### Graphical User Interface (GUI)
 
@@ -201,6 +232,7 @@ The executable will be created in `dist/DirectoryManagementSystem.exe`
 - Detects file types using extensions and MIME types
 - Analyzes content of text-based files
 - Tracks relative paths for folder structure preservation
+- **V2**: Improved Windows compatibility for MIME type detection
 
 ### Module 2: AI Categorizer
 - Rule-based categorization system
@@ -216,6 +248,39 @@ The executable will be created in `dist/DirectoryManagementSystem.exe`
 - Handles file conflicts with auto-renaming
 - Comprehensive logging
 - Dry-run mode support
+
+### Module 4: Duplicate Detector (NEW in V2)
+- Detects duplicate files using hash comparison
+- Groups files by size for faster detection
+- Calculates wasted space from duplicates
+- Supports MD5, SHA1, SHA256 hashing algorithms
+
+### Module 5: File Filter (NEW in V2)
+- Filter by file size (min/max)
+- Filter by file extension (include/exclude)
+- Filter by date range (created/modified)
+- Filter by filename patterns (regex)
+- Filter by category
+- Chain multiple filters together
+
+### Module 6: Undo Manager (NEW in V2)
+- Records all organization operations
+- Undo last operation
+- Redo support
+- Persistent history storage
+
+### Module 7: Statistics (NEW in V2)
+- Comprehensive file statistics
+- Category distribution analysis
+- Extension statistics
+- Date range analysis
+- Organization success/error rates
+- Formatted reports
+
+### Module 8: Configuration Manager (NEW in V2)
+- Export configuration to JSON/YAML
+- Import configuration from files
+- Default configuration templates
 
 ## 🔧 Configuration
 
@@ -273,8 +338,11 @@ See `PROJECT_REPORT.md` for complete project documentation including:
 Educational Project - CSE 316 Operating Systems
 
 ## 👥 Credits
-Shivam Mehra 
-Parth Tripathi
+
+**Course:** CSE 316 - Operating Systems  
+**Term:** 25261  
+**Institution:** Lovely Professional University
+
 ---
 
 ## 🎯 Quick Start Example
@@ -294,4 +362,3 @@ python src/main.py --source ./test_files --target ./organized
 ```
 
 **Happy Organizing! 🎉**
-
