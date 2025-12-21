@@ -273,11 +273,8 @@ See `PROJECT_REPORT.md` for complete project documentation including:
 Educational Project - CSE 316 Operating Systems
 
 ## 👥 Credits
-
-**Course:** CSE 316 - Operating Systems  
-**Term:** 25261  
-**Institution:** Lovely Professional University
-
+Shivam Mehra 
+Parth Tripathi
 ---
 
 ## 🎯 Quick Start Example
@@ -297,3 +294,4 @@ python src/main.py --source ./test_files --target ./organized
 ```
 
 **Happy Organizing! 🎉**
+
