@@ -8,9 +8,17 @@ import sys
 from pathlib import Path
 from tqdm import tqdm
 
+# Add src to path for imports
+src_path = Path(__file__).parent
+if str(src_path) not in sys.path:
+    sys.path.insert(0, str(src_path))
+
 from file_analyzer import FileAnalyzer
 from ai_categorizer import AICategorizer
 from directory_organizer import DirectoryOrganizer
+from duplicate_detector import DuplicateDetector
+from file_filter import FileFilter
+from statistics import Statistics
 
 
 def main():
@@ -53,8 +61,50 @@ def main():
         default='category',
         help='Organization strategy (default: category)'
     )
+    parser.add_argument(
+        '--min-size',
+        type=int,
+        help='Minimum file size in bytes to include'
+    )
+    parser.add_argument(
+        '--max-size',
+        type=int,
+        help='Maximum file size in bytes to include'
+    )
+    parser.add_argument(
+        '--exclude-ext',
+        nargs='+',
+        help='File extensions to exclude (e.g., .tmp .bak)'
+    )
+    parser.add_argument(
+        '--find-duplicates',
+        action='store_true',
+        help='Find and report duplicate files'
+    )
+    parser.add_argument(
+        '--stats',
+        action='store_true',
+        help='Generate detailed statistics report'
+    )
     
     args = parser.parse_args()
+    
+    # Validate paths
+    source_path = Path(args.source).resolve()
+    target_path = Path(args.target).resolve()
+    
+    # Check if source and target are the same
+    if source_path == target_path:
+        print("Error: Source and target directories cannot be the same!")
+        sys.exit(1)
+    
+    # Check if source is a subdirectory of target
+    try:
+        source_path.relative_to(target_path)
+        print("Error: Source directory cannot be inside target directory!")
+        sys.exit(1)
+    except ValueError:
+        pass  # Good, source is not inside target
     
     print("=" * 60)
     print("AI-Based Directory Management System")
@@ -76,6 +126,43 @@ def main():
         if not files_info:
             print("No files found to organize.")
             return
+        
+        # Apply filters if specified
+        if args.min_size or args.max_size or args.exclude_ext:
+            print("Applying filters...")
+            file_filter = FileFilter()
+            
+            if args.min_size or args.max_size:
+                file_filter.add_filter(file_filter.filter_by_size(
+                    min_size=args.min_size, max_size=args.max_size))
+            
+            if args.exclude_ext:
+                file_filter.add_filter(file_filter.filter_by_extension(
+                    args.exclude_ext, exclude=True))
+            
+            files_info = file_filter.apply_filters(files_info)
+            print(f"After filtering: {len(files_info)} files")
+            print()
+        
+        # Find duplicates if requested
+        if args.find_duplicates:
+            print("Finding duplicate files...")
+            duplicate_detector = DuplicateDetector()
+            duplicates = duplicate_detector.find_duplicates(files_info)
+            summary = duplicate_detector.get_duplicate_summary(duplicates)
+            
+            print(f"Found {summary['duplicate_groups']} duplicate groups")
+            print(f"Total duplicate files: {summary['total_duplicate_files']}")
+            print(f"Wasted space: {summary['wasted_space_mb']} MB")
+            print()
+        
+        # Generate statistics if requested
+        if args.stats:
+            print("Generating statistics...")
+            stats_gen = Statistics()
+            file_stats = stats_gen.generate_file_statistics(files_info)
+            print(stats_gen.format_statistics_report(file_stats))
+            print()
         
         # Module 2: AI Categorizer
         print("Step 2: Categorizing files...")
@@ -103,6 +190,15 @@ def main():
         
         # Print summary
         print(organizer.get_organization_summary(stats))
+        
+        # Generate organization statistics if requested
+        if args.stats:
+            stats_gen = Statistics()
+            org_stats = stats_gen.generate_organization_statistics(stats, categorized)
+            print("\nOrganization Statistics:")
+            print(f"Success Rate: {org_stats['success_rate']}%")
+            print(f"Error Rate: {org_stats['error_rate']}%")
+            print()
         
         if args.dry_run:
             print("\nRun without --dry-run to execute the organization.")
