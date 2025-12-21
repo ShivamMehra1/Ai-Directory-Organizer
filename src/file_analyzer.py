@@ -8,7 +8,13 @@ import mimetypes
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
-import magic
+
+# Try to import magic library, fallback to mimetypes if not available
+try:
+    import magic
+    MAGIC_AVAILABLE = True
+except ImportError:
+    MAGIC_AVAILABLE = False
 
 
 class FileAnalyzer:
@@ -110,14 +116,18 @@ class FileAnalyzer:
         Returns:
             MIME type string or None
         """
-        try:
-            # Try python-magic first (more accurate)
-            mime = magic.Magic(mime=True)
-            return mime.from_file(file_path)
-        except:
-            # Fallback to mimetypes
-            mime_type, _ = mimetypes.guess_type(file_path)
-            return mime_type
+        if MAGIC_AVAILABLE:
+            try:
+                # Try python-magic first (more accurate)
+                mime = magic.Magic(mime=True)
+                return mime.from_file(file_path)
+            except Exception:
+                # Fallback to mimetypes if magic fails
+                pass
+        
+        # Fallback to mimetypes
+        mime_type, _ = mimetypes.guess_type(file_path)
+        return mime_type
     
     def analyze_content(self, file_path: str, max_chars: int = 500) -> Optional[Dict]:
         """
