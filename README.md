@@ -17,6 +17,7 @@ An intelligent file organization system that automatically categorizes and organ
 - 📊 **Statistics Dashboard**: Comprehensive statistics and analytics
 - ⚙️ **Configuration Export/Import**: Save and load custom configurations
 - 🎨 **Enhanced GUI**: Improved interface with filtering options and better progress tracking
+- ☁️ **Cloud Storage Integration**: Organize and upload files to Google Drive, Dropbox, or OneDrive with organized folder structure
 
 ## 🎯 Project Overview
 
@@ -38,6 +39,7 @@ This system automatically analyzes files in a directory, categorizes them using 
 - **↩️ Undo Support**: Undo last organization operation
 - **📈 Statistics & Analytics**: Detailed statistics and reports
 - **💾 Config Export/Import**: Save and load custom configurations
+- **☁️ Cloud Storage**: Organize files locally and upload to Google Drive, Dropbox, or OneDrive
 
 ## 📂 Project Structure
 
@@ -50,9 +52,11 @@ This system automatically analyzes files in a directory, categorizes them using 
 │   ├── directory_organizer.py # Module 3: Directory Organization
 │   ├── duplicate_detector.py # Module 4: Duplicate Detection (NEW)
 │   ├── file_filter.py        # Module 5: File Filtering (NEW)
-│   ├── undo_manager.py       # Module 6: Undo Manager (NEW)
-│   ├── statistics.py         # Module 7: Statistics (NEW)
+│   ├── file_statistics.py    # Module 6: Statistics (NEW)
+│   ├── undo_manager.py       # Module 7: Undo Manager (NEW)
 │   ├── config_manager.py     # Module 8: Config Manager (NEW)
+│   ├── cloud_storage.py      # Module 9: Cloud Storage Integration (NEW)
+│   ├── cloud_auth_helper.py  # Module 10: Cloud Auth Helpers (NEW)
 │   ├── main.py               # CLI application entry point
 │   └── gui_main.py          # GUI application entry point
 ├── config/
@@ -113,6 +117,10 @@ python src/main.py --source ./test_files --target ./organized --strategy date
 - `--exclude-ext`: File extensions to exclude (e.g., `.tmp .bak`)
 - `--find-duplicates`: Find and report duplicate files
 - `--stats`: Generate detailed statistics report
+- `--cloud-upload`: Upload organized files to cloud storage (Google Drive, Dropbox, OneDrive)
+- `--cloud-provider`: Cloud provider name (`googledrive`, `dropbox`, `onedrive`)
+- `--cloud-path`: Remote path in cloud storage (e.g., `/OrganizedFiles`)
+- `--cloud-credentials`: Path to cloud credentials file
 
 ### Graphical User Interface (GUI)
 
@@ -282,6 +290,18 @@ The executable will be created in `dist/DirectoryManagementSystem.exe`
 - Import configuration from files
 - Default configuration templates
 
+### Module 9: Cloud Storage Integration (NEW in V2)
+- Upload organized files to Google Drive, Dropbox, or OneDrive
+- Preserves organized folder structure in cloud
+- OAuth 2.0 authentication
+- Progress tracking and error handling
+- Supports large file uploads with resumable uploads
+
+### Module 10: Cloud Auth Helpers (NEW in V2)
+- Setup guides for cloud providers
+- Credential validation
+- Quick access to cloud console links
+
 ## 🔧 Configuration
 
 Customize categories in `config/categories.yaml`:
@@ -301,6 +321,27 @@ All operations are logged in the `logs/` directory with timestamps. Logs include
 - Copy operations
 - Errors and warnings
 - Statistics
+
+## ☁️ Cloud Storage Integration
+
+Organize files locally and automatically upload them to cloud storage with organized folder structure preserved.
+
+### Supported Providers
+- **Google Drive**: Full folder structure support, OAuth 2.0 authentication
+- **Dropbox**: File upload with folder hierarchy
+- **OneDrive**: Microsoft Graph API integration
+
+### Quick Start
+1. **Enable Cloud Upload** in GUI or use `--cloud-upload` flag in CLI
+2. **Select Provider**: Choose Google Drive, Dropbox, or OneDrive
+3. **Configure Credentials**: Follow setup guides in `docs/cloud/` folder
+4. **Set Remote Path**: Specify where files should be uploaded (e.g., `/OrganizedFiles`)
+
+### Documentation
+- **Main Guide**: See `docs/cloud/CLOUD_STORAGE_GUIDE.md`
+- **Google Drive Setup**: See `docs/cloud/GOOGLE_DRIVE_SETUP.md`
+- **Troubleshooting**: See `docs/cloud/CLOUD_UPLOAD_TROUBLESHOOTING.md`
+- **Quick Fixes**: See `docs/cloud/QUICK_FIX_403_ERROR.md` and `docs/cloud/ENABLE_DRIVE_API.md`
 
 ## 🛠️ Troubleshooting
 
@@ -324,14 +365,33 @@ pip install pyinstaller
 - Normal! First build takes 5-10 minutes
 - Subsequent builds are faster (2-5 minutes)
 
-## 📄 Project Report
+**Cloud upload issues:**
+- See `docs/cloud/` folder for detailed troubleshooting guides
+- Make sure Google Drive API is enabled (see `docs/cloud/ENABLE_DRIVE_API.md`)
+- Verify credentials file is correct
+- Check that your email is added as a test user (for Google Drive)
 
-See `PROJECT_REPORT.md` for complete project documentation including:
-- Detailed module breakdown
-- Technology stack
-- Flow diagrams
-- Implementation details
-- Future scope
+## 📚 Documentation
+
+### Main Documentation
+- **README.md**: This file - main project documentation
+- **CHANGELOG.md**: Version history and changes
+- **RELEASE_NOTES_V2.md**: Version 2.0 release notes
+
+### Cloud Storage Documentation
+Located in `docs/cloud/`:
+- **CLOUD_STORAGE_GUIDE.md**: Complete cloud storage integration guide
+- **GOOGLE_DRIVE_SETUP.md**: Step-by-step Google Drive setup
+- **QUICK_FIX_403_ERROR.md**: Quick fix for 403 access denied errors
+- **ENABLE_DRIVE_API.md**: How to enable Google Drive API
+- **SIMPLIFIED_CLOUD_SETUP.md**: Simplified cloud setup process
+- **CLOUD_FEATURE_SUMMARY.md**: Cloud features overview
+- **CLOUD_UPLOAD_TROUBLESHOOTING.md**: Troubleshooting cloud upload issues
+
+### Additional Guides
+Located in `docs/guides/`:
+- **LINUX_USAGE_GUIDE.md**: Complete guide for using the application on Linux
+- **V2.md**: Technical code changes documentation for Version 2.0
 
 ## 📚 License
 
@@ -339,9 +399,8 @@ Educational Project - CSE 316 Operating Systems
 
 ## 👥 Credits
 
-**Course:** CSE 316 - Operating Systems  
-**Term:** 25261  
-**Institution:** Lovely Professional University
+ Shivam Mehra 
+ Parth Tripathi 
 
 ---
 

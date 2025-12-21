@@ -22,6 +22,8 @@ from duplicate_detector import DuplicateDetector
 from file_filter import FileFilter
 from file_statistics import Statistics
 from undo_manager import UndoManager
+from cloud_storage import CloudStorageManager
+from cloud_auth_helper import CloudAuthHelper
 
 
 class DirectoryManagementGUI:
@@ -30,7 +32,7 @@ class DirectoryManagementGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("AI-Based Directory Management System")
-        self.root.geometry("800x700")
+        self.root.geometry("900x850")
         self.root.resizable(True, True)
         
         # Variables
@@ -44,9 +46,14 @@ class DirectoryManagementGUI:
         self.min_size = tk.StringVar()
         self.max_size = tk.StringVar()
         self.exclude_patterns = tk.StringVar()
+        self.cloud_provider = tk.StringVar(value="")
+        self.cloud_path = tk.StringVar(value="/OrganizedFiles")
+        self.cloud_credentials = tk.StringVar()
+        self.upload_to_cloud = tk.BooleanVar(value=False)
         
         # Initialize managers
         self.undo_manager = UndoManager()
+        self.cloud_manager = CloudStorageManager()
         
         self.setup_ui()
         
@@ -78,7 +85,7 @@ class DirectoryManagementGUI:
         
         # Options frame
         options_frame = ttk.LabelFrame(main_frame, text="Options", padding="10")
-        options_frame.grid(row=4, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        options_frame.grid(row=5, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
         
         # Organization strategy
         ttk.Label(options_frame, text="Organization Strategy:").grid(row=0, column=0, sticky=tk.W, pady=5)
@@ -110,9 +117,37 @@ class DirectoryManagementGUI:
         ttk.Label(filter_frame, text="Exclude Patterns (comma-separated):").grid(row=1, column=0, sticky=tk.W, pady=2)
         ttk.Entry(filter_frame, textvariable=self.exclude_patterns, width=40).grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), padx=5, pady=2)
         
+        # Cloud storage options
+        cloud_frame = ttk.LabelFrame(main_frame, text="Cloud Storage Upload (Optional)", padding="10")
+        cloud_frame.grid(row=4, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        
+        ttk.Checkbutton(cloud_frame, text="Upload to Cloud Storage", 
+                       variable=self.upload_to_cloud).grid(row=0, column=0, columnspan=3, sticky=tk.W, pady=5)
+        
+        ttk.Label(cloud_frame, text="Provider:").grid(row=1, column=0, sticky=tk.W, pady=2)
+        cloud_combo = ttk.Combobox(cloud_frame, textvariable=self.cloud_provider, 
+                                  values=["", "googledrive", "dropbox", "onedrive"], 
+                                  state="readonly", width=20)
+        cloud_combo.grid(row=1, column=1, sticky=tk.W, padx=5, pady=2)
+        
+        ttk.Label(cloud_frame, text="Cloud Path:").grid(row=2, column=0, sticky=tk.W, pady=2)
+        ttk.Entry(cloud_frame, textvariable=self.cloud_path, width=30).grid(row=2, column=1, sticky=tk.W, padx=5, pady=2)
+        
+        ttk.Label(cloud_frame, text="Credentials File:").grid(row=3, column=0, sticky=tk.W, pady=2)
+        ttk.Entry(cloud_frame, textvariable=self.cloud_credentials, width=30).grid(row=3, column=1, sticky=(tk.W, tk.E), padx=5, pady=2)
+        ttk.Button(cloud_frame, text="Browse", command=self.browse_credentials).grid(row=3, column=2, padx=5, pady=2)
+        
+        # Setup helper buttons
+        help_frame = ttk.Frame(cloud_frame)
+        help_frame.grid(row=4, column=0, columnspan=3, pady=5, sticky=tk.W)
+        
+        ttk.Button(help_frame, text="📖 Setup Guide", command=self.show_setup_guide, width=18).pack(side=tk.LEFT, padx=2)
+        ttk.Button(help_frame, text="🔍 Validate Credentials", command=self.validate_credentials, width=20).pack(side=tk.LEFT, padx=2)
+        ttk.Button(help_frame, text="🌐 Open Console", command=self.open_cloud_console, width=18).pack(side=tk.LEFT, padx=2)
+        
         # Buttons frame
         button_frame = ttk.Frame(main_frame)
-        button_frame.grid(row=5, column=0, columnspan=3, pady=10)
+        button_frame.grid(row=6, column=0, columnspan=3, pady=10)
         
         self.start_button = ttk.Button(button_frame, text="Start Organization", 
                                        command=self.start_organization, width=20)
@@ -128,18 +163,18 @@ class DirectoryManagementGUI:
         
         # Progress bar
         self.progress = ttk.Progressbar(main_frame, mode='indeterminate')
-        self.progress.grid(row=6, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        self.progress.grid(row=7, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
         
         # Status label
         self.status_label = ttk.Label(main_frame, text="Ready", foreground="green")
-        self.status_label.grid(row=7, column=0, columnspan=3, pady=5)
+        self.status_label.grid(row=8, column=0, columnspan=3, pady=5)
         
         # Log output
         log_frame = ttk.LabelFrame(main_frame, text="Log Output", padding="10")
-        log_frame.grid(row=8, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=10)
+        log_frame.grid(row=9, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=10)
         log_frame.columnconfigure(0, weight=1)
         log_frame.rowconfigure(0, weight=1)
-        main_frame.rowconfigure(8, weight=1)
+        main_frame.rowconfigure(9, weight=1)
         
         self.log_text = scrolledtext.ScrolledText(log_frame, height=15, width=80, wrap=tk.WORD)
         self.log_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -157,6 +192,132 @@ class DirectoryManagementGUI:
         if directory:
             self.target_path.set(directory)
             self.log("Target directory selected: " + directory)
+    
+    def browse_credentials(self):
+        """Browse for cloud storage credentials file."""
+        provider = self.cloud_provider.get()
+        
+        if provider == "googledrive":
+            filetypes = [("JSON files", "*.json"), ("All files", "*.*")]
+        elif provider == "dropbox":
+            filetypes = [("Text files", "*.txt"), ("All files", "*.*")]
+        else:
+            filetypes = [("All files", "*.*")]
+        
+        filename = filedialog.askopenfilename(
+            title="Select Credentials File",
+            filetypes=filetypes
+        )
+        if filename:
+            self.cloud_credentials.set(filename)
+            self.log("Credentials file selected: " + filename)
+            
+            # Auto-validate if Google Drive
+            if provider == "googledrive":
+                self.validate_credentials()
+    
+    def show_setup_guide(self):
+        """Show setup guide for selected cloud provider."""
+        provider = self.cloud_provider.get()
+        
+        if not provider:
+            messagebox.showinfo("Setup Guide", "Please select a cloud provider first.")
+            return
+        
+        helper = CloudAuthHelper()
+        
+        if provider == "googledrive":
+            guide = helper.get_google_drive_setup_guide()
+            # Get user email if possible
+            import getpass
+            username = getpass.getuser()
+            guide = guide.format(email=f"{username}@gmail.com (or your email)")
+        elif provider == "dropbox":
+            guide = helper.get_dropbox_setup_guide()
+        else:
+            guide = "Setup guide for this provider coming soon."
+        
+        # Show in a new window
+        guide_window = tk.Toplevel(self.root)
+        guide_window.title(f"{provider.title()} Setup Guide")
+        guide_window.geometry("700x500")
+        
+        text_widget = scrolledtext.ScrolledText(guide_window, wrap=tk.WORD, padx=10, pady=10)
+        text_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        text_widget.insert(tk.END, guide)
+        text_widget.config(state=tk.DISABLED)
+        
+        ttk.Button(guide_window, text="Open Setup Page", 
+                  command=lambda: helper.open_google_cloud_console("credentials") if provider == "googledrive" else None).pack(pady=5)
+        ttk.Button(guide_window, text="Close", command=guide_window.destroy).pack(pady=5)
+    
+    def validate_credentials(self):
+        """Validate credentials file."""
+        provider = self.cloud_provider.get()
+        creds_path = self.cloud_credentials.get()
+        
+        if not provider:
+            messagebox.showwarning("Validation", "Please select a cloud provider first.")
+            return
+        
+        if not creds_path:
+            messagebox.showwarning("Validation", "Please select a credentials file first.")
+            return
+        
+        if provider == "googledrive":
+            helper = CloudAuthHelper()
+            result = helper.validate_google_credentials(creds_path)
+            
+            if result['valid']:
+                info_msg = "✅ Credentials file is valid!\n\n"
+                if result['info']:
+                    info_msg += "File contains:\n"
+                    for key, value in result['info'].items():
+                        info_msg += f"  • {key}: {value}\n"
+                messagebox.showinfo("Validation Success", info_msg)
+            else:
+                error_msg = "❌ Credentials file has issues:\n\n"
+                for error in result['errors']:
+                    error_msg += f"• {error}\n"
+                if result['warnings']:
+                    error_msg += "\nWarnings:\n"
+                    for warning in result['warnings']:
+                        error_msg += f"• {warning}\n"
+                messagebox.showerror("Validation Failed", error_msg)
+        else:
+            # Basic file existence check for other providers
+            if os.path.exists(creds_path):
+                messagebox.showinfo("Validation", f"✅ Credentials file found: {creds_path}")
+            else:
+                messagebox.showerror("Validation", f"❌ File not found: {creds_path}")
+    
+    def open_cloud_console(self):
+        """Open cloud provider console in browser."""
+        provider = self.cloud_provider.get()
+        
+        if not provider:
+            messagebox.showinfo("Open Console", "Please select a cloud provider first.")
+            return
+        
+        helper = CloudAuthHelper()
+        
+        if provider == "googledrive":
+            # Ask which page to open
+            choice = messagebox.askyesno(
+                "Open Google Cloud Console",
+                "Open OAuth Consent Screen (to add test users)?\n\n"
+                "Click 'Yes' for Consent Screen\n"
+                "Click 'No' for Credentials page"
+            )
+            page = "consent" if choice else "credentials"
+            helper.open_google_cloud_console(page)
+            self.log(f"Opened Google Cloud Console: {page}")
+        elif provider == "dropbox":
+            import webbrowser
+            webbrowser.open("https://www.dropbox.com/developers/apps")
+            self.log("Opened Dropbox App Console")
+        else:
+            messagebox.showinfo("Info", "Console link for this provider coming soon.")
     
     def log(self, message):
         """Add message to log."""
@@ -340,6 +501,16 @@ class DirectoryManagementGUI:
             self.log(f"Errors: {stats['errors']}")
             self.log("=" * 60)
             
+            # Verify files in target directory
+            if not dry_run:
+                import os
+                target_file_count = 0
+                for root, dirs, files in os.walk(target):
+                    target_file_count += len(files)
+                self.log(f"\nVerification: Found {target_file_count} files in target directory: {target}")
+                if target_file_count == 0:
+                    self.log("⚠️ WARNING: Target directory is empty! Files may not have been copied.")
+            
             # Generate organization statistics if requested
             if self.show_stats.get():
                 stats_gen = Statistics()
@@ -355,8 +526,152 @@ class DirectoryManagementGUI:
             else:
                 self.log("\nOrganization completed successfully!")
                 self.log(f"Log file saved in: logs/")
-                self.finish_organization("Organization completed!", "green")
-                messagebox.showinfo("Success", "Files organized successfully!")
+                
+                # Cloud storage upload if requested
+                if self.upload_to_cloud.get() and self.cloud_provider.get():
+                    self.log("\n" + "=" * 60)
+                    self.log("Cloud Storage Upload")
+                    self.log("=" * 60)
+                    self.update_status("Uploading to cloud...", "blue")
+                    
+                    try:
+                        remote_path = self.cloud_path.get() or "/OrganizedFiles"
+                        credentials = self.cloud_credentials.get().strip() if self.cloud_credentials.get() else None
+                        
+                        # Validate credentials for Google Drive
+                        if self.cloud_provider.get() == 'googledrive':
+                            if not credentials:
+                                raise ValueError(
+                                    "Google Drive requires credentials file.\n"
+                                    "Please select a credentials JSON file from Google Cloud Console."
+                                )
+                            if not os.path.exists(credentials):
+                                raise FileNotFoundError(f"Credentials file not found: {credentials}")
+                        
+                        self.log(f"Uploading to {self.cloud_provider.get()}...")
+                        if credentials:
+                            self.log(f"Using credentials: {credentials}")
+                        
+                        # Verify target directory has files before uploading
+                        import os
+                        target_file_count = 0
+                        for root, dirs, files in os.walk(target):
+                            target_file_count += len(files)
+                        
+                        self.log(f"\nPre-upload verification:")
+                        self.log(f"  Target directory: {target}")
+                        self.log(f"  Files found: {target_file_count}")
+                        
+                        if target_file_count == 0:
+                            raise ValueError(
+                                f"No files found in target directory: {target}\n\n"
+                                f"This might happen if:\n"
+                                f"1. Dry run mode was used (files weren't actually copied)\n"
+                                f"2. All files were skipped due to conflicts\n"
+                                f"3. Organization failed silently\n\n"
+                                f"Please check the organization summary above."
+                            )
+                        
+                        # Files are already organized to target directory, so upload from there
+                        upload_stats = self.cloud_manager.organize_and_upload(
+                            source_dir=target,  # Upload from already-organized directory
+                            cloud_provider=self.cloud_provider.get(),
+                            remote_base_path=remote_path,
+                            organize_first=False,  # Skip organization, files already organized
+                            target_dir=None,
+                            credentials_path=credentials,
+                            log_callback=self.log  # Pass GUI log function
+                        )
+                        
+                        self.log(f"\nUpload Summary:")
+                        self.log(f"  Files uploaded: {upload_stats['uploaded']}")
+                        self.log(f"  Files failed: {upload_stats['failed']}")
+                        self.log(f"  Total files: {upload_stats['total_files']}")
+                        self.log(f"\nFiles uploaded to: {remote_path}")
+                        
+                        # Show errors if any
+                        if upload_stats.get('errors'):
+                            self.log(f"\nUpload Errors (first 10):")
+                            for error in upload_stats['errors'][:10]:
+                                self.log(f"  - {error}")
+                            if len(upload_stats['errors']) > 10:
+                                self.log(f"  ... and {len(upload_stats['errors']) - 10} more errors")
+                        
+                        self.finish_organization("Upload completed!", "green")
+                        messagebox.showinfo("Success", 
+                                          f"Files organized and uploaded successfully!\n"
+                                          f"Uploaded: {upload_stats['uploaded']} files")
+                    except Exception as e:
+                        error_msg = str(e)
+                        self.log(f"\nError uploading to cloud storage: {error_msg}")
+                        self.finish_organization("Upload failed", "red")
+                        
+                        # Provide helpful error message
+                        if "API has not been used" in error_msg or "is disabled" in error_msg or "accessNotConfigured" in error_msg:
+                            # Extract project ID if possible
+                            import re
+                            project_id = None
+                            match = re.search(r'project[^\d]*(\d+)', error_msg)
+                            if match:
+                                project_id = match.group(1)
+                            
+                            api_url = "https://console.developers.google.com/apis/api/drive.googleapis.com/overview"
+                            if project_id:
+                                api_url += f"?project={project_id}"
+                            
+                            help_text = (
+                                f"❌ Google Drive API Not Enabled\n\n"
+                                f"The Google Drive API is not enabled in your Google Cloud project.\n\n"
+                                f"QUICK FIX:\n"
+                                f"1. Click this link: {api_url}\n"
+                                f"2. Click the 'ENABLE' button\n"
+                                f"3. Wait 2-3 minutes for changes to propagate\n"
+                                f"4. Try uploading again\n\n"
+                                f"See GOOGLE_DRIVE_SETUP.md for detailed instructions."
+                            )
+                        elif "credentials" in error_msg.lower() or "authentication" in error_msg.lower():
+                            if "403" in error_msg or "access_denied" in error_msg.lower() or "verification" in error_msg.lower():
+                                help_text = (
+                                    f"Google Drive Access Blocked (Error 403)\n\n"
+                                    f"Your email is not in the test users list.\n\n"
+                                    f"QUICK FIX:\n"
+                                    f"1. Go to: https://console.cloud.google.com/apis/credentials/consent\n"
+                                    f"2. Scroll to 'Test users' section\n"
+                                    f"3. Click 'Add Users'\n"
+                                    f"4. Add your email: {os.getenv('USERNAME', 'your-email@gmail.com')}\n"
+                                    f"5. Click 'Add'\n"
+                                    f"6. Try again!\n\n"
+                                    f"See QUICK_FIX_403_ERROR.md for detailed instructions."
+                                )
+                            else:
+                                help_text = (
+                                    f"Authentication Error:\n{error_msg}\n\n"
+                                    "For Google Drive:\n"
+                                    "1. Go to https://console.cloud.google.com/\n"
+                                    "2. Create project and enable Google Drive API\n"
+                                    "3. Create OAuth 2.0 credentials (Desktop app)\n"
+                                    "4. Download JSON and select it in credentials field\n"
+                                    "5. Add your email as test user in OAuth consent screen\n\n"
+                                    "For Dropbox:\n"
+                                    "1. Get access token from Dropbox App Console\n"
+                                    "2. Save to file and select it\n\n"
+                                    "For OneDrive:\n"
+                                    "1. Register app in Azure Portal\n"
+                                    "2. Set ONEDRIVE_CLIENT_ID environment variable"
+                                )
+                        else:
+                            help_text = (
+                                f"Error uploading to cloud:\n{error_msg}\n\n"
+                                "Make sure you have:\n"
+                                "1. Installed cloud libraries (pip install -r requirements.txt)\n"
+                                "2. Set up authentication\n"
+                                "3. Provided correct credentials file"
+                            )
+                        
+                        messagebox.showerror("Upload Error", help_text)
+                else:
+                    self.finish_organization("Organization completed!", "green")
+                    messagebox.showinfo("Success", "Files organized successfully!")
             
         except Exception as e:
             error_msg = f"Error: {str(e)}"

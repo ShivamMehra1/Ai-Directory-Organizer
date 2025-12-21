@@ -42,6 +42,7 @@ def build_exe():
         '--hidden-import=file_statistics',
         '--hidden-import=undo_manager',
         '--hidden-import=config_manager',
+        '--hidden-import=cloud_storage',
         '--collect-all=magic',  # Include python-magic
         '--collect-all=yaml',  # Include yaml
         '--noconfirm',  # Overwrite output without asking

@@ -3,7 +3,7 @@ from PyInstaller.utils.hooks import collect_all
 
 datas = [('C:\\Users\\harry\\OneDrive\\Desktop\\Ai-Directory-Organizer-main\\version2\\config', 'config')]
 binaries = []
-hiddenimports = ['tkinter', 'tkinter.ttk', 'tkinter.filedialog', 'tkinter.messagebox', 'tkinter.scrolledtext', 'file_analyzer', 'ai_categorizer', 'directory_organizer', 'duplicate_detector', 'file_filter', 'file_statistics', 'undo_manager', 'config_manager']
+hiddenimports = ['tkinter', 'tkinter.ttk', 'tkinter.filedialog', 'tkinter.messagebox', 'tkinter.scrolledtext', 'file_analyzer', 'ai_categorizer', 'directory_organizer', 'duplicate_detector', 'file_filter', 'file_statistics', 'undo_manager', 'config_manager', 'cloud_storage']
 tmp_ret = collect_all('magic')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('yaml')

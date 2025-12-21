@@ -73,22 +73,49 @@ Version 2.0 includes significant bug fixes and major new features to enhance the
   - Default configuration templates
   - Category definitions export/import
 
-### 6. Enhanced GUI
+### 6. Cloud Storage Integration
+- **Module**: `src/cloud_storage.py`, `src/cloud_auth_helper.py`
+- **Features**:
+  - Upload organized files to Google Drive, Dropbox, or OneDrive
+  - Preserves organized folder structure in cloud
+  - OAuth 2.0 authentication
+  - Progress tracking and error handling
+  - Supports large file uploads with resumable uploads
+  - Two-phase upload: create folders first, then upload files
+  - Folder caching for performance
+  - CLI options: `--cloud-upload`, `--cloud-provider`, `--cloud-path`, `--cloud-credentials`
+  - GUI: Cloud storage panel with provider selection and credentials browser
+  - Helper buttons: Setup guide, credential validation, cloud console links
+- **Documentation**: See `docs/cloud/` folder for complete guides
+
+### 7. Enhanced GUI
 - **Improvements**:
   - Added filtering options panel
   - Duplicate detection checkbox
   - Statistics checkbox
   - Undo button
+  - Cloud storage integration panel
+  - Helper buttons for cloud setup
   - Better progress tracking
-  - Improved error messages
+  - Improved error messages with specific solutions
   - Path validation feedback
+  - Increased window size for better visibility
+
+### 8. Cloud Authentication Helpers
+- **Module**: `src/cloud_auth_helper.py`
+- **Features**:
+  - Setup guides for cloud providers
+  - Credential validation functions
+  - Quick access to cloud console links
+  - Error-specific troubleshooting guides
 
 ## Technical Improvements
 
 1. **Better Error Handling**: More robust error handling throughout the application
 2. **Code Organization**: New modules for better separation of concerns
-3. **Documentation**: Updated README with all new features
+3. **Documentation**: Updated README with all new features and organized into `docs/` folder
 4. **Version Tracking**: Updated version to 2.0.0 in `__init__.py`
+5. **Cloud Integration**: Two-phase upload process for better folder structure preservation
 
 ## Migration Notes
 
@@ -96,6 +123,7 @@ Version 2.0 includes significant bug fixes and major new features to enhance the
 - New features are optional and can be enabled via CLI flags or GUI checkboxes
 - Configuration files from v1.0 are still compatible
 - No breaking changes to existing APIs
+- Cloud storage features require additional dependencies (see requirements.txt)
 
 ## Files Added
 

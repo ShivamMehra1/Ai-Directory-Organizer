@@ -86,6 +86,28 @@ def main():
         action='store_true',
         help='Generate detailed statistics report'
     )
+    parser.add_argument(
+        '--cloud-upload',
+        type=str,
+        choices=['googledrive', 'dropbox', 'onedrive'],
+        help='Upload organized files to cloud storage (googledrive, dropbox, onedrive)'
+    )
+    parser.add_argument(
+        '--cloud-path',
+        type=str,
+        help='Base path in cloud storage for uploads (e.g., /OrganizedFiles)'
+    )
+    parser.add_argument(
+        '--cloud-credentials',
+        type=str,
+        help='Path to cloud storage credentials file'
+    )
+    parser.add_argument(
+        '--organize-then-upload',
+        action='store_true',
+        default=True,
+        help='Organize files locally first, then upload (default: True)'
+    )
     
     args = parser.parse_args()
     
@@ -205,6 +227,39 @@ def main():
         else:
             print("\nOrganization completed successfully!")
             print(f"Log file saved in: logs/")
+            
+            # Cloud storage upload if requested
+            if args.cloud_upload:
+                print("\n" + "=" * 60)
+                print("Cloud Storage Upload")
+                print("=" * 60)
+                
+                try:
+                    cloud_manager = CloudStorageManager()
+                    remote_path = args.cloud_path or '/OrganizedFiles'
+                    
+                    print(f"Uploading to {args.cloud_upload}...")
+                    upload_stats = cloud_manager.organize_and_upload(
+                        source_dir=args.source,
+                        cloud_provider=args.cloud_upload,
+                        remote_base_path=remote_path,
+                        organize_first=args.organize_then_upload,
+                        target_dir=args.target if args.organize_then_upload else None,
+                        credentials_path=args.cloud_credentials
+                    )
+                    
+                    print(f"\nUpload Summary:")
+                    print(f"  Files uploaded: {upload_stats['uploaded']}")
+                    print(f"  Files failed: {upload_stats['failed']}")
+                    print(f"  Total files: {upload_stats['total_files']}")
+                    print(f"\nFiles uploaded to: {remote_path}")
+                    
+                except Exception as e:
+                    print(f"\nError uploading to cloud storage: {e}")
+                    print("Make sure you have:")
+                    print("  1. Installed cloud storage libraries (pip install -r requirements.txt)")
+                    print("  2. Set up credentials/authentication")
+                    print("  3. Provided correct credentials path if needed")
         
     except KeyboardInterrupt:
         print("\n\nOperation cancelled by user.")

@@ -77,6 +77,28 @@ Save and share your custom configurations:
 - Default configuration templates
 - Easy sharing between installations
 
+### ☁️ Cloud Storage Integration
+Organize files locally and automatically upload them to cloud storage with organized folder structure preserved:
+
+- **Google Drive**: Full folder structure support, OAuth 2.0 authentication
+- **Dropbox**: File upload with folder hierarchy
+- **OneDrive**: Microsoft Graph API integration
+
+**Features:**
+- Preserves organized folder structure in cloud
+- Two-phase upload process (folders first, then files)
+- Progress tracking and detailed error reporting
+- Helper buttons for easy setup
+- Automatic folder creation in cloud
+- Support for large files with resumable uploads
+
+**Usage:**
+```bash
+python src/main.py --source ./files --target ./organized --cloud-upload --cloud-provider googledrive --cloud-path /OrganizedFiles --cloud-credentials credentials.json
+```
+
+**Documentation:** See `docs/cloud/` folder for complete setup guides and troubleshooting.
+
 ### 🎨 Enhanced GUI
 Improved user interface with new capabilities:
 - Filtering options panel
