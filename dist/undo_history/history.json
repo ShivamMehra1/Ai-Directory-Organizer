@@ -1,0 +1,659 @@
+[
+  {
+    "type": "organize",
+    "timestamp": "2025-12-21T20:49:34.424868",
+    "operations": [
+      {
+        "source": "D:\\sem 1\\html\\index.html",
+        "destination": "D:\\managed sem 1\\html\\code\\html\\index.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\README.md",
+        "destination": "D:\\managed sem 1\\html\\code\\other\\README.md",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\HTML practice\\BASIC.html",
+        "destination": "D:\\managed sem 1\\HTML practice\\code\\html\\BASIC.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\HTML practice\\index.html",
+        "destination": "D:\\managed sem 1\\HTML practice\\code\\html\\index.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\HTML practice\\to do list",
+        "destination": "D:\\managed sem 1\\HTML practice\\other\\other\\to do list",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\javascript\\first.html",
+        "destination": "D:\\managed sem 1\\javascript\\code\\html\\first.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\javascript\\second.html",
+        "destination": "D:\\managed sem 1\\javascript\\code\\html\\second.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\practical\\new.html",
+        "destination": "D:\\managed sem 1\\practical\\code\\html\\new.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\YT COURSE HTML\\LEVEL1.HTML",
+        "destination": "D:\\managed sem 1\\YT COURSE HTML\\code\\html\\LEVEL1.HTML",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\YT COURSE HTML\\LEVEL2.HTML",
+        "destination": "D:\\managed sem 1\\YT COURSE HTML\\code\\html\\LEVEL2.HTML",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\YT COURSE HTML\\PROJECTS\\INDEX.HTML",
+        "destination": "D:\\managed sem 1\\YT COURSE HTML\\PROJECTS\\code\\html\\INDEX.HTML",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\A54330581_21_2024_K24CN.pdf.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\A54330581_21_2024_K24CN.pdf.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\acc324.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\acc324.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\activity.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\activity.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\Activity2.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\Activity2.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\activity3.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\activity3.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\add.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\add.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\border.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\border.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\ca.css",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\css\\ca.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\class11-8.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\class11-8.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\cn4.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\cn4.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\cn5.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\cn5.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\cn6.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\cn6.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\css.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\css.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\css2.HTML",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\css2.HTML",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\First.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\First.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\ghsad.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\ghsad.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\gpt.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\gpt.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\javascripts_function.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\javascripts_function.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\login.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\login.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\Login2.HTML",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\Login2.HTML",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\new.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\new.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\parts of css box model.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\parts of css box model.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\practice css.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\practice css.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\Shivam_Mehra_49.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\Shivam_Mehra_49.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\Student details.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\Student details.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\styless.css",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\css\\styless.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\visual2.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\visual2.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\website.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\website.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\website2.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\website2.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\website3.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\code\\html\\website3.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\11-8.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\11-8.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\chess.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\chess.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\classes&objects.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\classes&objects.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\dictionary.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\dictionary.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\factorial.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\factorial.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\file_handling.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\file_handling.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\if else.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\if else.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\methods.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\code\\python\\methods.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\f",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\other\\other\\f",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\12.11.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\12.11.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\8.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\8.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\calculate gcd and hcf.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\calculate gcd and hcf.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\fibonacci numbers.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\fibonacci numbers.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\for loop.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\for loop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\inheritance.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\inheritance.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\logical.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\logical.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\loop in loop.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\loop in loop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\loop.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\loop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\multiples of numbers.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\multiples of numbers.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\new.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\new.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\practice.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\practice.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\print loop.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\print loop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\sets.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\sets.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\shift.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\shift.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\sum while loop.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\sum while loop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\Table.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\code\\python\\Table.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\file_handling.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\code\\python\\file_handling.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\a.txt",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\documents\\txt\\a.txt",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\b.txt",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\file_handling\\documents\\txt\\b.txt",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\18sep.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\18sep.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\18sep_return.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\18sep_return.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\20sep_types_of_arguments.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\20sep_types_of_arguments.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\functions and recursion.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\functions and recursion.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\greet.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\greet.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\lamda functions.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\lamda functions.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\pigame.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\Unit3\\code\\python\\pigame.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\14\\8.py",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\INT108\\CLASS9\\14\\code\\python\\8.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\index.html",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\code\\html\\index.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\README.md",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\code\\other\\README.md",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\lightslider.css",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\code\\css\\lightslider.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\style.css",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\code\\css\\style.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\swiper-bundle.min.css",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\css\\code\\css\\swiper-bundle.min.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\glider-slider.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\glider-slider.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\glider.min.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\glider.min.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\Jquery.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\Jquery.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\lightslider.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\lightslider.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\script-mini.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\script-mini.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\script.js",
+        "destination": "D:\\managed sem 1\\SHIVAM MEHRA\\CSE326\\html\\js\\code\\javascript\\script.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 1\\first.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 1\\code\\python\\first.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 1\\module.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 1\\code\\python\\module.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\01_variables.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\01_variables.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\02_datatypes.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\02_datatypes.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\03_Rules_Variables.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\03_Rules_Variables.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\04_Operators.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\04_Operators.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\05_type.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\05_type.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\06_input.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\06_input.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\nbw.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\code\\python\\nbw.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\CSE326\\default.html",
+        "destination": "D:\\managed sem 1\\programing\\CSE326\\code\\html\\default.html",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\encryptionCODE\\encrypt",
+        "destination": "D:\\managed sem 1\\programing\\encryptionCODE\\code\\other\\encrypt",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\encryptionCODE\\solar",
+        "destination": "D:\\managed sem 1\\programing\\encryptionCODE\\code\\other\\solar",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\INT108\\first.py",
+        "destination": "D:\\managed sem 1\\programing\\INT108\\code\\python\\first.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\3d",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\3d",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\3d laptop.py",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\python\\3d laptop.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\Fibonacci numbers",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\Fibonacci numbers",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\game2",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\game2",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\game3",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\game3",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\task",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\task",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\weather",
+        "destination": "D:\\managed sem 1\\programing\\projects\\code\\other\\weather",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\game",
+        "destination": "D:\\managed sem 1\\programing\\projects\\other\\other\\game",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\projects\\games 1",
+        "destination": "D:\\managed sem 1\\programing\\projects\\other\\other\\games 1",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\01_problem1.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\01_problem1.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\02_problem2.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\02_problem2.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\03_problem3.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\03_problem3.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\04_problem4.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\04_problem4.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\05_problem5.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\05_problem5.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 2\\problem\\06_problem6.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 2\\problem\\code\\python\\06_problem6.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 1\\problems\\01_problem1.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 1\\problems\\code\\python\\01_problem1.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 1\\problems\\02_problem2.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 1\\problems\\code\\python\\02_problem2.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\chapter 1\\problems\\03_problem3.py",
+        "destination": "D:\\managed sem 1\\programing\\chapter 1\\problems\\code\\python\\03_problem3.py",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\css\\lightslider.css",
+        "destination": "D:\\managed sem 1\\html\\css\\code\\css\\lightslider.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\css\\style.css",
+        "destination": "D:\\managed sem 1\\html\\css\\code\\css\\style.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\css\\swiper-bundle.min.css",
+        "destination": "D:\\managed sem 1\\html\\css\\code\\css\\swiper-bundle.min.css",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\glider-slider.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\glider-slider.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\glider.min.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\glider.min.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\Jquery.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\Jquery.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\lightslider.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\lightslider.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\script-mini.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\script-mini.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\html\\js\\script.js",
+        "destination": "D:\\managed sem 1\\html\\js\\code\\javascript\\script.js",
+        "status": "moved"
+      },
+      {
+        "source": "D:\\sem 1\\programing\\secret.key",
+        "destination": "D:\\managed sem 1\\programing\\other\\other\\secret.key",
+        "status": "moved"
+      }
+    ],
+    "id": 0
+  }
+]

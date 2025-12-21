@@ -1,9 +1,9 @@
 # -*- mode: python ; coding: utf-8 -*-
 from PyInstaller.utils.hooks import collect_all
 
-datas = [('D:\\os project\\AI directory organiser\\config', 'config')]
+datas = [('C:\\Users\\harry\\OneDrive\\Desktop\\Ai-Directory-Organizer-main\\version2\\config', 'config')]
 binaries = []
-hiddenimports = ['tkinter', 'tkinter.ttk', 'tkinter.filedialog', 'tkinter.messagebox', 'tkinter.scrolledtext', 'file_analyzer', 'ai_categorizer', 'directory_organizer']
+hiddenimports = ['tkinter', 'tkinter.ttk', 'tkinter.filedialog', 'tkinter.messagebox', 'tkinter.scrolledtext', 'file_analyzer', 'ai_categorizer', 'directory_organizer', 'duplicate_detector', 'file_filter', 'file_statistics', 'undo_manager', 'config_manager']
 tmp_ret = collect_all('magic')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('yaml')
@@ -11,8 +11,8 @@ datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 
 
 a = Analysis(
-    ['D:\\os project\\AI directory organiser\\src\\gui_main.py'],
-    pathex=['D:\\os project\\AI directory organiser\\src'],
+    ['C:\\Users\\harry\\OneDrive\\Desktop\\Ai-Directory-Organizer-main\\version2\\src\\gui_main.py'],
+    pathex=['C:\\Users\\harry\\OneDrive\\Desktop\\Ai-Directory-Organizer-main\\version2\\src'],
     binaries=binaries,
     datas=datas,
     hiddenimports=hiddenimports,

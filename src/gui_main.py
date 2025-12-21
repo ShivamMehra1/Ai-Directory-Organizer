@@ -20,7 +20,7 @@ from ai_categorizer import AICategorizer
 from directory_organizer import DirectoryOrganizer
 from duplicate_detector import DuplicateDetector
 from file_filter import FileFilter
-from statistics import Statistics
+from file_statistics import Statistics
 from undo_manager import UndoManager
 
 

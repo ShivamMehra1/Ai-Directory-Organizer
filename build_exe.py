@@ -37,6 +37,11 @@ def build_exe():
         '--hidden-import=file_analyzer',
         '--hidden-import=ai_categorizer',
         '--hidden-import=directory_organizer',
+        '--hidden-import=duplicate_detector',
+        '--hidden-import=file_filter',
+        '--hidden-import=file_statistics',
+        '--hidden-import=undo_manager',
+        '--hidden-import=config_manager',
         '--collect-all=magic',  # Include python-magic
         '--collect-all=yaml',  # Include yaml
         '--noconfirm',  # Overwrite output without asking
