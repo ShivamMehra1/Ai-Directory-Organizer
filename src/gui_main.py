@@ -18,6 +18,10 @@ if str(src_path) not in sys.path:
 from file_analyzer import FileAnalyzer
 from ai_categorizer import AICategorizer
 from directory_organizer import DirectoryOrganizer
+from duplicate_detector import DuplicateDetector
+from file_filter import FileFilter
+from statistics import Statistics
+from undo_manager import UndoManager
 
 
 class DirectoryManagementGUI:
@@ -35,6 +39,14 @@ class DirectoryManagementGUI:
         self.strategy = tk.StringVar(value="category")
         self.dry_run = tk.BooleanVar(value=True)
         self.is_running = False
+        self.find_duplicates = tk.BooleanVar(value=False)
+        self.show_stats = tk.BooleanVar(value=False)
+        self.min_size = tk.StringVar()
+        self.max_size = tk.StringVar()
+        self.exclude_patterns = tk.StringVar()
+        
+        # Initialize managers
+        self.undo_manager = UndoManager()
         
         self.setup_ui()
         
@@ -66,7 +78,7 @@ class DirectoryManagementGUI:
         
         # Options frame
         options_frame = ttk.LabelFrame(main_frame, text="Options", padding="10")
-        options_frame.grid(row=3, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        options_frame.grid(row=4, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
         
         # Organization strategy
         ttk.Label(options_frame, text="Organization Strategy:").grid(row=0, column=0, sticky=tk.W, pady=5)
@@ -78,9 +90,29 @@ class DirectoryManagementGUI:
         ttk.Checkbutton(options_frame, text="Dry Run (Preview Only)", 
                        variable=self.dry_run).grid(row=1, column=0, columnspan=2, sticky=tk.W, pady=5)
         
+        # Additional options
+        ttk.Checkbutton(options_frame, text="Find Duplicates", 
+                       variable=self.find_duplicates).grid(row=2, column=0, columnspan=2, sticky=tk.W, pady=5)
+        
+        ttk.Checkbutton(options_frame, text="Show Statistics", 
+                       variable=self.show_stats).grid(row=3, column=0, columnspan=2, sticky=tk.W, pady=5)
+        
+        # Filtering options
+        filter_frame = ttk.LabelFrame(main_frame, text="File Filters (Optional)", padding="10")
+        filter_frame.grid(row=3, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        
+        ttk.Label(filter_frame, text="Min Size (bytes):").grid(row=0, column=0, sticky=tk.W, pady=2)
+        ttk.Entry(filter_frame, textvariable=self.min_size, width=15).grid(row=0, column=1, sticky=tk.W, padx=5, pady=2)
+        
+        ttk.Label(filter_frame, text="Max Size (bytes):").grid(row=0, column=2, sticky=tk.W, padx=(10, 0), pady=2)
+        ttk.Entry(filter_frame, textvariable=self.max_size, width=15).grid(row=0, column=3, sticky=tk.W, padx=5, pady=2)
+        
+        ttk.Label(filter_frame, text="Exclude Patterns (comma-separated):").grid(row=1, column=0, sticky=tk.W, pady=2)
+        ttk.Entry(filter_frame, textvariable=self.exclude_patterns, width=40).grid(row=1, column=1, columnspan=3, sticky=(tk.W, tk.E), padx=5, pady=2)
+        
         # Buttons frame
         button_frame = ttk.Frame(main_frame)
-        button_frame.grid(row=4, column=0, columnspan=3, pady=10)
+        button_frame.grid(row=5, column=0, columnspan=3, pady=10)
         
         self.start_button = ttk.Button(button_frame, text="Start Organization", 
                                        command=self.start_organization, width=20)
@@ -92,20 +124,22 @@ class DirectoryManagementGUI:
         
         ttk.Button(button_frame, text="Clear Log", command=self.clear_log, width=20).pack(side=tk.LEFT, padx=5)
         
+        ttk.Button(button_frame, text="Undo", command=self.undo_operation, width=15).pack(side=tk.LEFT, padx=5)
+        
         # Progress bar
         self.progress = ttk.Progressbar(main_frame, mode='indeterminate')
-        self.progress.grid(row=5, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        self.progress.grid(row=6, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
         
         # Status label
         self.status_label = ttk.Label(main_frame, text="Ready", foreground="green")
-        self.status_label.grid(row=6, column=0, columnspan=3, pady=5)
+        self.status_label.grid(row=7, column=0, columnspan=3, pady=5)
         
         # Log output
         log_frame = ttk.LabelFrame(main_frame, text="Log Output", padding="10")
-        log_frame.grid(row=7, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=10)
+        log_frame.grid(row=8, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=10)
         log_frame.columnconfigure(0, weight=1)
         log_frame.rowconfigure(0, weight=1)
-        main_frame.rowconfigure(7, weight=1)
+        main_frame.rowconfigure(8, weight=1)
         
         self.log_text = scrolledtext.ScrolledText(log_frame, height=15, width=80, wrap=tk.WORD)
         self.log_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -144,9 +178,24 @@ class DirectoryManagementGUI:
             messagebox.showerror("Error", "Please select both source and target directories!")
             return
         
-        if not os.path.exists(self.source_path.get()):
+        source = Path(self.source_path.get()).resolve()
+        target = Path(self.target_path.get()).resolve()
+        
+        if not source.exists():
             messagebox.showerror("Error", "Source directory does not exist!")
             return
+        
+        if source == target:
+            messagebox.showerror("Error", "Source and target directories cannot be the same!")
+            return
+        
+        # Check if source is inside target
+        try:
+            source.relative_to(target)
+            messagebox.showerror("Error", "Source directory cannot be inside target directory!")
+            return
+        except ValueError:
+            pass  # Good, source is not inside target
         
         self.is_running = True
         self.start_button.config(state=tk.DISABLED)
@@ -202,6 +251,51 @@ class DirectoryManagementGUI:
                 self.finish_organization("No files found", "orange")
                 return
             
+            # Apply filters if specified
+            min_size = self.min_size.get().strip()
+            max_size = self.max_size.get().strip()
+            exclude_patterns = self.exclude_patterns.get().strip()
+            
+            if min_size or max_size or exclude_patterns:
+                self.log("Applying filters...")
+                file_filter = FileFilter()
+                
+                if min_size or max_size:
+                    min_val = int(min_size) if min_size else None
+                    max_val = int(max_size) if max_size else None
+                    file_filter.add_filter(file_filter.filter_by_size(min_val, max_val))
+                    self.log(f"Size filter: {min_val or 0} - {max_val or 'unlimited'} bytes")
+                
+                if exclude_patterns:
+                    patterns = [p.strip() for p in exclude_patterns.split(',')]
+                    file_filter.add_filter(file_filter.filter_by_exclude_patterns(patterns))
+                    self.log(f"Exclude patterns: {', '.join(patterns)}")
+                
+                files_info = file_filter.apply_filters(files_info)
+                self.log(f"After filtering: {len(files_info)} files")
+                self.log("")
+            
+            # Find duplicates if requested
+            if self.find_duplicates.get():
+                self.log("Finding duplicate files...")
+                self.update_status("Finding duplicates...", "blue")
+                duplicate_detector = DuplicateDetector()
+                duplicates = duplicate_detector.find_duplicates(files_info)
+                summary = duplicate_detector.get_duplicate_summary(duplicates)
+                
+                self.log(f"Found {summary['duplicate_groups']} duplicate groups")
+                self.log(f"Total duplicate files: {summary['total_duplicate_files']}")
+                self.log(f"Wasted space: {summary['wasted_space_mb']} MB")
+                self.log("")
+            
+            # Generate statistics if requested
+            if self.show_stats.get():
+                self.log("Generating statistics...")
+                stats_gen = Statistics()
+                file_stats = stats_gen.generate_file_statistics(files_info)
+                self.log(stats_gen.format_statistics_report(file_stats))
+                self.log("")
+            
             if not self.is_running:
                 return
             
@@ -231,6 +325,11 @@ class DirectoryManagementGUI:
             stats = organizer.organize_files(categorized, organization_strategy=strategy, 
                                            subcategorize=True, preserve_structure=True)
             
+            # Record operation for undo (only if not dry run)
+            if not dry_run:
+                operations = stats.get('operations', [])
+                self.undo_manager.record_operation('organize', operations)
+            
             # Display summary
             self.log("")
             self.log("Organization Summary:")
@@ -240,6 +339,15 @@ class DirectoryManagementGUI:
             self.log(f"Skipped: {stats['skipped']}")
             self.log(f"Errors: {stats['errors']}")
             self.log("=" * 60)
+            
+            # Generate organization statistics if requested
+            if self.show_stats.get():
+                stats_gen = Statistics()
+                org_stats = stats_gen.generate_organization_statistics(stats, categorized)
+                self.log("\nOrganization Statistics:")
+                self.log(f"Success Rate: {org_stats['success_rate']}%")
+                self.log(f"Error Rate: {org_stats['error_rate']}%")
+                self.log("")
             
             if dry_run:
                 self.log("\nRun without Dry Run to execute the organization.")
@@ -266,6 +374,22 @@ class DirectoryManagementGUI:
         self.start_button.config(state=tk.NORMAL)
         self.stop_button.config(state=tk.DISABLED)
         self.update_status(message, color)
+    
+    def undo_operation(self):
+        """Undo the last organization operation."""
+        if not self.undo_manager.can_undo():
+            messagebox.showinfo("Info", "No operations to undo.")
+            return
+        
+        result = messagebox.askyesno("Confirm Undo", 
+                                    "Are you sure you want to undo the last operation?")
+        if result:
+            undo_result = self.undo_manager.undo()
+            if undo_result:
+                self.log(f"Undone {undo_result['undone']} files")
+                messagebox.showinfo("Success", f"Undo completed: {undo_result['undone']} files removed")
+            else:
+                messagebox.showerror("Error", "Failed to undo operation.")
 
 
 def main():
