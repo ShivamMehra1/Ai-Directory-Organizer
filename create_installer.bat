@@ -18,11 +18,17 @@ if errorlevel 1 (
 )
 
 echo Step 1: Installing build dependencies...
-pip install pyinstaller
+REM Try python -m pip first (most reliable)
+python -m pip install pyinstaller
 if errorlevel 1 (
-    echo ERROR: Failed to install PyInstaller
-    pause
-    exit /b 1
+    echo Trying alternative pip command...
+    pip install pyinstaller
+    if errorlevel 1 (
+        echo ERROR: Failed to install PyInstaller
+        echo Make sure pip is installed: python -m ensurepip --upgrade
+        pause
+        exit /b 1
+    )
 )
 
 echo.
@@ -34,11 +40,17 @@ if not exist requirements.txt (
     pause
     exit /b 1
 )
-pip install -r requirements.txt
+REM Try python -m pip first (most reliable)
+python -m pip install -r requirements.txt
 if errorlevel 1 (
-    echo ERROR: Failed to install dependencies
-    pause
-    exit /b 1
+    echo Trying alternative pip command...
+    pip install -r requirements.txt
+    if errorlevel 1 (
+        echo ERROR: Failed to install dependencies
+        echo Make sure pip is installed: python -m ensurepip --upgrade
+        pause
+        exit /b 1
+    )
 )
 
 echo.
