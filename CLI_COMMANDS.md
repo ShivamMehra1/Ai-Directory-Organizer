@@ -27,13 +27,13 @@ Complete guide to using the Command Line Interface (CLI) for the Directory Manag
 ### Command Syntax
 
 ```bash
-python src/main.py --source <source_dir> --target <target_dir> [OPTIONS]
+py src/main.py --source <source_dir> --target <target_dir> [OPTIONS]
 ```
 
 ### Quick Start Example
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized
+py src/main.py --source ./Downloads --target ./Organized
 ```
 
 This command will:
@@ -115,7 +115,7 @@ This command will:
 
 **Example:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --dry-run
+py src/main.py --source ./Downloads --target ./Organized --dry-run
 ```
 
 **Output:**
@@ -139,7 +139,7 @@ python src/main.py --source ./Downloads --target ./Organized --dry-run
 **Example:**
 ```bash
 # Scan only top-level files
-python src/main.py --source ./Downloads --target ./Organized --no-recursive
+py src/main.py --source ./Downloads --target ./Organized --no-recursive
 ```
 
 **Note:** By default, scanning is recursive. Use `--no-recursive` to disable.
@@ -157,7 +157,7 @@ python src/main.py --source ./Downloads --target ./Organized --no-recursive
 
 **Example:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
+py src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
 ```
 
 **Config File Format:**
@@ -189,7 +189,7 @@ custom_category:
 **Example:**
 ```bash
 # Organize by date
-python src/main.py --source ./Downloads --target ./Organized --strategy date
+py src/main.py --source ./Downloads --target ./Organized --strategy date
 ```
 
 **Default:** `category`
@@ -210,10 +210,10 @@ python src/main.py --source ./Downloads --target ./Organized --strategy date
 **Examples:**
 ```bash
 # Only files larger than 1MB (1048576 bytes)
-python src/main.py --source ./Downloads --target ./Organized --min-size 1048576
+py src/main.py --source ./Downloads --target ./Organized --min-size 1048576
 
 # Only files larger than 100KB (102400 bytes)
-python src/main.py --source ./Downloads --target ./Organized --min-size 102400
+py src/main.py --source ./Downloads --target ./Organized --min-size 102400
 ```
 
 **Size Conversions:**
@@ -235,13 +235,13 @@ python src/main.py --source ./Downloads --target ./Organized --min-size 102400
 **Example:**
 ```bash
 # Only files smaller than 10MB
-python src/main.py --source ./Downloads --target ./Organized --max-size 10485760
+py src/main.py --source ./Downloads --target ./Organized --max-size 10485760
 ```
 
 **Combined with `--min-size`:**
 ```bash
 # Files between 1MB and 10MB
-python src/main.py --source ./Downloads --target ./Organized --min-size 1048576 --max-size 10485760
+py src/main.py --source ./Downloads --target ./Organized --min-size 1048576 --max-size 10485760
 ```
 
 ---
@@ -258,10 +258,10 @@ python src/main.py --source ./Downloads --target ./Organized --min-size 1048576 
 **Example:**
 ```bash
 # Exclude temporary and backup files
-python src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .log
+py src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .log
 
 # Exclude system files
-python src/main.py --source ./Downloads --target ./Organized --exclude-ext .DS_Store .Thumbs.db
+py src/main.py --source ./Downloads --target ./Organized --exclude-ext .DS_Store .Thumbs.db
 ```
 
 **Notes:**
@@ -284,7 +284,7 @@ python src/main.py --source ./Downloads --target ./Organized --exclude-ext .DS_S
 
 **Example:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --find-duplicates
+py src/main.py --source ./Downloads --target ./Organized --find-duplicates
 ```
 
 **Output:**
@@ -317,7 +317,7 @@ Wasted space: 45.2 MB
 
 **Example:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --stats
+py src/main.py --source ./Downloads --target ./Organized --stats
 ```
 
 **Statistics Include:**
@@ -360,7 +360,7 @@ Categories:
 
 **Example:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive
 ```
 
 ---
@@ -377,10 +377,10 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload goog
 **Examples:**
 ```bash
 # Upload to /OrganizedFiles in Google Drive
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-path /OrganizedFiles
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-path /OrganizedFiles
 
 # Upload to /MyFiles/Organized in Dropbox
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-path /MyFiles/Organized
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-path /MyFiles/Organized
 ```
 
 **Default:** `/OrganizedFiles` if not specified
@@ -404,10 +404,10 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload drop
 **Examples:**
 ```bash
 # Google Drive (credentials.json)
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials credentials.json
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials credentials.json
 
 # Dropbox (token.txt)
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-credentials token.txt
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-credentials token.txt
 ```
 
 **Credentials File Types:**
@@ -433,10 +433,10 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload drop
 **Example:**
 ```bash
 # Organize locally first, then upload organized structure
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --organize-then-upload
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --organize-then-upload
 
 # Upload directly from source (organize in cloud)
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --no-organize-then-upload
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --no-organize-then-upload
 ```
 
 **Default:** `True` (organize locally first)
@@ -467,7 +467,7 @@ my_images:
 
 **Usage:**
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
+py src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
 ```
 
 ---
@@ -477,7 +477,7 @@ python src/main.py --source ./Downloads --target ./Organized --config config/cus
 ### Example 1: Basic Organization
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized
+py src/main.py --source ./Downloads --target ./Organized
 ```
 
 **What it does:**
@@ -491,7 +491,7 @@ python src/main.py --source ./Downloads --target ./Organized
 ### Example 2: Preview Before Organizing
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --dry-run
+py src/main.py --source ./Downloads --target ./Organized --dry-run
 ```
 
 **What it does:**
@@ -504,7 +504,7 @@ python src/main.py --source ./Downloads --target ./Organized --dry-run
 ### Example 3: Filter Large Files Only
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --min-size 10485760
+py src/main.py --source ./Downloads --target ./Organized --min-size 10485760
 ```
 
 **What it does:**
@@ -516,7 +516,7 @@ python src/main.py --source ./Downloads --target ./Organized --min-size 10485760
 ### Example 4: Exclude Temporary Files
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .log
+py src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .log
 ```
 
 **What it does:**
@@ -527,7 +527,7 @@ python src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp 
 ### Example 5: Find Duplicates
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --find-duplicates
+py src/main.py --source ./Downloads --target ./Organized --find-duplicates
 ```
 
 **What it does:**
@@ -540,7 +540,7 @@ python src/main.py --source ./Downloads --target ./Organized --find-duplicates
 ### Example 6: Generate Statistics
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --stats
+py src/main.py --source ./Downloads --target ./Organized --stats
 ```
 
 **What it does:**
@@ -553,7 +553,7 @@ python src/main.py --source ./Downloads --target ./Organized --stats
 ### Example 7: Organize and Upload to Google Drive
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials credentials.json --cloud-path /MyOrganizedFiles
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials credentials.json --cloud-path /MyOrganizedFiles
 ```
 
 **What it does:**
@@ -571,7 +571,7 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload goog
 ### Example 8: Upload to Dropbox
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-credentials token.txt --cloud-path /OrganizedFiles
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload dropbox --cloud-credentials token.txt --cloud-path /OrganizedFiles
 ```
 
 **What it does:**
@@ -586,7 +586,7 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload drop
 ### Example 9: Complete Workflow with All Features
 
 ```bash
-python src/main.py \
+py src/main.py \
   --source ./Downloads \
   --target ./Organized \
   --min-size 102400 \
@@ -611,7 +611,7 @@ python src/main.py \
 ### Example 10: Organize by Date
 
 ```bash
-python src/main.py --source ./Downloads --target ./Organized --strategy date
+py src/main.py --source ./Downloads --target ./Organized --strategy date
 ```
 
 **What it does:**
@@ -629,7 +629,7 @@ python src/main.py --source ./Downloads --target ./Organized --strategy date
 **Solution:**
 ```bash
 # Use different directories
-python src/main.py --source ./Downloads --target ./Organized
+py src/main.py --source ./Downloads --target ./Organized
 ```
 
 ---
@@ -639,7 +639,7 @@ python src/main.py --source ./Downloads --target ./Organized
 **Solution:**
 ```bash
 # Use a different target directory outside source
-python src/main.py --source ./Downloads --target ./Organized
+py src/main.py --source ./Downloads --target ./Organized
 # NOT: --target ./Downloads/Organized
 ```
 
@@ -651,7 +651,7 @@ python src/main.py --source ./Downloads --target ./Organized
 ```bash
 # Check if source directory exists
 # Use absolute path or correct relative path
-python src/main.py --source /path/to/existing/directory --target ./Organized
+py src/main.py --source /path/to/existing/directory --target ./Organized
 ```
 
 ---
@@ -670,7 +670,7 @@ python src/main.py --source /path/to/existing/directory --target ./Organized
 pip install -r requirements.txt
 
 # 2. Check credentials file path
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials ./credentials.json
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --cloud-credentials ./credentials.json
 
 # 3. For Google Drive: Enable API in Google Cloud Console
 # See docs/cloud/ENABLE_DRIVE_API.md
@@ -686,7 +686,7 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload goog
 
 ```bash
 # Test before organizing
-python src/main.py --source ./Downloads --target ./Organized --dry-run
+py src/main.py --source ./Downloads --target ./Organized --dry-run
 ```
 
 **Why:** See what will happen without making changes
@@ -697,7 +697,7 @@ python src/main.py --source ./Downloads --target ./Organized --dry-run
 
 ```bash
 # Only process large files
-python src/main.py --source ./Downloads --target ./Organized --min-size 1048576
+py src/main.py --source ./Downloads --target ./Organized --min-size 1048576
 ```
 
 **Why:** Faster processing, less disk I/O
@@ -708,7 +708,7 @@ python src/main.py --source ./Downloads --target ./Organized --min-size 1048576
 
 ```bash
 # Skip temporary and system files
-python src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .DS_Store .Thumbs.db
+py src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp .bak .DS_Store .Thumbs.db
 ```
 
 **Why:** Cleaner organization, faster processing
@@ -719,7 +719,7 @@ python src/main.py --source ./Downloads --target ./Organized --exclude-ext .tmp 
 
 ```bash
 # Get detailed insights
-python src/main.py --source ./Downloads --target ./Organized --stats
+py src/main.py --source ./Downloads --target ./Organized --stats
 ```
 
 **Why:** Understand your file distribution before organizing
@@ -730,7 +730,7 @@ python src/main.py --source ./Downloads --target ./Organized --stats
 
 ```bash
 # Identify duplicates first
-python src/main.py --source ./Downloads --target ./Organized --find-duplicates
+py src/main.py --source ./Downloads --target ./Organized --find-duplicates
 ```
 
 **Why:** Know what duplicates exist, save storage space
@@ -741,7 +741,7 @@ python src/main.py --source ./Downloads --target ./Organized --find-duplicates
 
 ```bash
 # Define custom categories
-python src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
+py src/main.py --source ./Downloads --target ./Organized --config config/custom_categories.yaml
 ```
 
 **Why:** Better categorization for your specific file types
@@ -752,7 +752,7 @@ python src/main.py --source ./Downloads --target ./Organized --config config/cus
 
 ```bash
 # Organize first, then upload (default behavior)
-python src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --organize-then-upload
+py src/main.py --source ./Downloads --target ./Organized --cloud-upload googledrive --organize-then-upload
 ```
 
 **Why:** 
@@ -766,10 +766,10 @@ python src/main.py --source ./Downloads --target ./Organized --cloud-upload goog
 
 ```bash
 # Windows
-python src/main.py --source C:\Users\Username\Downloads --target C:\Users\Username\Organized
+py src/main.py --source C:\Users\Username\Downloads --target C:\Users\Username\Organized
 
 # Linux/Mac
-python src/main.py --source /home/username/Downloads --target /home/username/Organized
+py src/main.py --source /home/username/Downloads --target /home/username/Organized
 ```
 
 **Why:** Avoids path resolution issues
@@ -780,7 +780,7 @@ python src/main.py --source /home/username/Downloads --target /home/username/Org
 
 ```bash
 # Comprehensive organization
-python src/main.py \
+py src/main.py \
   --source ./Downloads \
   --target ./Organized \
   --min-size 102400 \
@@ -832,7 +832,7 @@ After organization, check the log files in `logs/` directory for:
 ### Display Help
 
 ```bash
-python src/main.py --help
+py src/main.py --help
 ```
 
 **Output:** Shows all available arguments and descriptions
